@@ -1289,7 +1289,7 @@ can edit ARGLIST before running svn.
 
 The hook svn-pre-run-hook allows to monitor/modify the ARGLIST."
   (setq arglist (svn-status-flatten-list arglist))
-  (if (eq (process-status "svn") nil)
+  (if (null (get-process "svn"))
       (progn
         (when svn-status-edit-svn-command
           (setq arglist (append
